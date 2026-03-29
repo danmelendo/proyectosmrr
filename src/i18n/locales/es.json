@@ -1,0 +1,302 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Quiénes Somos",
+    "services": "Servicios",
+    "sustainableReforms": "Reformas Sostenibles",
+    "realEstateInvestment": "Inversión Inmobiliaria",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "description": "Transformamos espacios con responsabilidad ambiental. Especialistas en reformas sostenibles e inversión inmobiliaria.",
+    "quickLinks": "Enlaces Rápidos",
+    "services": "Servicios",
+    "sustainableReforms": "Reformas Sostenibles",
+    "realEstateInvestment": "Inversión Inmobiliaria",
+    "projectManagement": "Gestión de Proyectos",
+    "consulting": "Consultoría",
+    "contact": "Contacto",
+    "phone": "Teléfono",
+    "email": "Email",
+    "location": "Ubicación",
+    "copyright": "Todos los derechos reservados.",
+    "legalNotice": "Aviso Legal",
+    "privacyPolicy": "Política de Privacidad",
+    "language": "Idioma"
+  },
+  "home": {
+    "hero": {
+      "title1": "Donde otros ven una reforma, nosotros vemos una ",
+      "opportunity": "oportunidad",
+      "title2": " de ",
+      "transformation": "transformación",
+      "subtitle": "En MRR no reformamos espacios.",
+      "subtitle2": "Reformamos la manera de entender su valor."
+    },
+    "innovation": {
+      "title": "Compromiso con la innovación y la sostenibilidad",
+      "text1": "MRR no es una empresa de reformas al uso. Es una firma que transforma espacios con propósito, apostando por la sostenibilidad como eje estratégico y por la innovación como motor de cambio.",
+      "text2": "Porque creemos que reformar de forma responsable no solo es mejor para el entorno, sino también para el valor a largo plazo de cada activo.",
+      "text3": "Alta ",
+      "quality": "calidad",
+      "agility": "agilidad",
+      "text4": " en los plazos y un enfoque claro: ",
+      "lastingValue": "construir valor duradero"
+    },
+    "values": {
+      "title": "Nuestros valores nos definen",
+      "commitment": "<span class='font-semibold text-gold'>Compromiso</span> auténtico con las personas y el entorno",
+      "sustainability": "<span class='font-semibold text-gold'>Sostenibilidad</span> como principio, no como tendencia",
+      "excellence": "<span class='font-semibold text-gold'>Excelencia</span> técnica y estética en cada detalle",
+      "transparency": "<span class='font-semibold text-gold'>Transparencia</span> y confianza en cada paso",
+      "vision": "<span class='font-semibold text-gold'>Visión</span> a largo plazo con ambición inversora",
+      "cta": "Conócenos"
+    },
+    "services": {
+      "title": "Nuestros Servicios",
+      "subtitle": "Soluciones integrales para tu proyecto",
+      "reforms": {
+        "title": "Reformas Sostenibles",
+        "description": "Transformamos espacios con materiales ecológicos y diseño eficiente."
+      },
+      "investment": {
+        "title": "Inversión Inmobiliaria",
+        "description": "Asesoramiento experto para maximizar tu inversión inmobiliaria."
+      },
+      "moreInfo": "Más información"
+    },
+    "cta": {
+      "title": "¿Tienes un proyecto en mente?",
+      "description": "Cuéntanos tu idea y te ayudaremos a hacerla realidad de forma sostenible.",
+      "button": "Contáctanos"
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "Quiénes Somos",
+      "title": "Construyendo el futuro con",
+      "highlight": "responsabilidad",
+      "description": "Somos un equipo apasionado por la arquitectura sostenible y la inversión inmobiliaria responsable. Más de dos décadas transformando espacios y creando valor para nuestros clientes y comunidades."
+    },
+    "story": {
+      "label": "Nuestra Historia",
+      "title": "Reformar con visión.",
+      "title2": "Nace MRR.",
+      "text1": "En 2022, nació una idea sencilla pero poderosa: transformar viviendas no solo para que se vean mejor, sino para que sean más valiosas, habitables y sostenibles en el tiempo. Así empezó MRR. Una marca que no entiende las reformas como un trámite, sino como una oportunidad para crear valor real.",
+      "text2": "Desde el principio, supimos que no queríamos ser una empresa de reformas más. Queríamos ser un proyecto con propósito. Con visión de futuro. Con compromiso con el presente.",
+      "text3": "Por eso, en MRR lo que hacemos va mucho más allá de renovar espacios. Apostamos por la sostenibilidad como estrategia, no como tendencia. Por la rentabilidad a largo plazo, no por el beneficio inmediato. Y por la calidad, no como un eslogan, sino como una promesa que cumplimos cada día."
+    },
+    "values": {
+      "label": "Nuestros Valores",
+      "title": "Lo que nos define",
+      "commitment": {
+        "title": "Compromiso",
+        "description": "Nos comprometemos con cada proyecto como si fuera propio, garantizando resultados excepcionales."
+      },
+      "sustainability": {
+        "title": "Sostenibilidad",
+        "description": "Cada decisión que tomamos considera su impacto ambiental y social a largo plazo."
+      },
+      "excellence": {
+        "title": "Excelencia",
+        "description": "Buscamos la perfección en cada detalle, desde el diseño hasta la ejecución final."
+      },
+      "transparency": {
+        "title": "Transparencia",
+        "description": "Mantenemos una comunicación clara y honesta durante todo el proceso."
+      }
+    },
+    "team": {
+      "label": "Nuestro Equipo",
+      "title": "Quiénes lideran MRR",
+      "reza": {
+        "name": "Reza Rezaei",
+        "role": "CEO & Founder",
+        "description": "Como fundador de Proyectos MRR, Reza lidera la visión estratégica de la compañía, especializándose en identificar oportunidades de inversión con alto potencial de rentabilidad. Su enfoque combina análisis riguroso del mercado con gestión patrimonial orientada a maximizar el valor de cada activo."
+      },
+      "lucas": {
+        "name": "Lucas Arriola",
+        "role": "CFO & Partner",
+        "description": "Especialista en optimización de procesos y gestión de proyectos inmobiliarios. Con trayectoria en eficiencia operativa, Lucas aporta una visión analítica orientada a resultados, escalando modelos de negocio con estructuras sólidas y ejecución impecable."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para empezar tu proyecto?",
+      "description": "Estamos aquí para ayudarte a hacer realidad tus ideas de forma sostenible.",
+      "button": "Contáctanos"
+    }
+  },
+  "reforms": {
+    "hero": {
+      "label": "Nuestros Servicios",
+      "title": "Reformas",
+      "highlight": "Sostenibles",
+      "description": "Transformamos espacios con materiales ecológicos y técnicas respetuosas con el medio ambiente para crear hogares eficientes y saludables."
+    },
+    "main": {
+      "title": "Reformas Sostenibles",
+      "description": "Transformamos espacios con materiales ecológicos y técnicas respetuosas con el medio ambiente. Nuestro enfoque integral garantiza reformas que no solo mejoran la estética de tu hogar, sino que también optimizan su eficiencia energética y reducen su impacto ambiental.",
+      "features": {
+        "materials": "Materiales certificados y sostenibles",
+        "efficiency": "Eficiencia energética optimizada",
+        "design": "Diseño bioclimático",
+        "waste": "Gestión de residuos responsable",
+        "certifications": "Certificaciones ambientales"
+      },
+      "cta": "Solicitar información"
+    },
+    "beforeAfter": {
+      "before": "Antes",
+      "after": "Después"
+    },
+    "additional": {
+      "label": "Servicios Adicionales",
+      "title": "Más formas de ayudarte",
+      "projectManagement": {
+        "title": "Gestión de Proyectos",
+        "description": "Coordinación integral desde el diseño hasta la entrega, asegurando plazos y presupuestos."
+      },
+      "energyConsulting": {
+        "title": "Consultoría Energética",
+        "description": "Auditorías y planes de mejora para optimizar el consumo energético de tu propiedad."
+      }
+    },
+    "process": {
+      "label": "Nuestro Proceso",
+      "title": "Cómo trabajamos",
+      "consultation": {
+        "step": "01",
+        "title": "Consulta",
+        "description": "Analizamos en detalle tus necesidades, objetivos y expectativas para entender a fondo tu proyecto."
+      },
+      "design": {
+        "step": "02",
+        "title": "Diseño",
+        "description": "Desarrollamos un plan personalizado que integra funcionalidad, estética y sostenibilidad."
+      },
+      "execution": {
+        "step": "03",
+        "title": "Ejecución",
+        "description": "Nuestro equipo profesional implementa cada fase con precisión y control de calidad."
+      },
+      "delivery": {
+        "step": "04",
+        "title": "Entrega",
+        "description": "Finalizamos con un resultado que supera expectativas, garantizando tu satisfacción."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para transformar tu espacio?",
+      "description": "Contacta con nosotros y descubre cómo podemos ayudarte con tu reforma sostenible.",
+      "button": "Solicitar Información"
+    }
+  },
+  "investment": {
+    "hero": {
+      "label": "Nuestros Servicios",
+      "title": "Inversión",
+      "highlight": "Inmobiliaria",
+      "description": "Asesoramiento experto en estrategias de inversión inmobiliaria: desde crowdfunding colaborativo hasta operaciones de flipping, pasando por fondos especializados y financiación para reformas."
+    },
+    "main": {
+      "title": "Inversión Inmobiliaria Inteligente",
+      "description": "Asesoramiento experto para identificar oportunidades de inversión rentables y sostenibles. Nuestro equipo te acompaña en todo el proceso, desde la búsqueda de propiedades con potencial hasta la ejecución de reformas estratégicas que maximizan el valor de tu inversión.",
+      "features": {
+        "analysis": "Análisis de mercado detallado",
+        "flipping": "Identificación de oportunidades de flipping",
+        "strategy": "Compra, reforma y venta estratégica",
+        "dueDiligence": "Due diligence completa",
+        "portfolio": "Gestión de cartera inmobiliaria",
+        "roi": "Maximización del retorno de inversión"
+      },
+      "cta": "Solicitar información"
+    },
+    "financing": {
+      "label": "Opciones de Financiación",
+      "title": "Financiación Alternativa e Inversión Colaborativa",
+      "description": "Descubre las diferentes modalidades de inversión y financiación inmobiliaria que ponemos a tu disposición para maximizar tu rentabilidad."
+    },
+    "cta": {
+      "title": "¿Listo para invertir?",
+      "description": "Contacta con nosotros y descubre cómo podemos ayudarte a maximizar tu inversión inmobiliaria.",
+      "button": "Solicitar información"
+    }
+  },
+  "contact": {
+    "hero": {
+      "label": "Contacto",
+      "title": "Hablemos de tu",
+      "highlight": "proyecto",
+      "description": "Estamos construyendo algo más que una empresa. Una nueva manera de entender el valor inmobiliario: más consciente, más exigente, más alineada con el mundo que viene. Y esto es solo el principio."
+    },
+    "info": {
+      "title": "Información de contacto",
+      "description": "No dudes en contactarnos. Estaremos encantados de atenderte.",
+      "phone": "Teléfono",
+      "email": "Email",
+      "location": "Ubicación"
+    },
+    "form": {
+      "title": "Envíanos un mensaje",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+34 600 000 000",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿En qué podemos ayudarte?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos los detalles de tu proyecto...",
+      "privacy": "He leído y acepto la",
+      "privacyLink": "Política de Privacidad",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando...",
+      "success": {
+        "title": "¡Mensaje enviado!",
+        "description": "Gracias por contactarnos. Te responderemos lo antes posible.",
+        "button": "Enviar otro mensaje"
+      },
+      "errors": {
+        "nameRequired": "El nombre es requerido",
+        "nameTooLong": "El nombre es demasiado largo",
+        "emailInvalid": "Email inválido",
+        "emailTooLong": "El email es demasiado largo",
+        "subjectRequired": "El asunto es requerido",
+        "subjectTooLong": "El asunto es demasiado largo",
+        "messageMin": "El mensaje debe tener al menos 10 caracteres",
+        "messageTooLong": "El mensaje es demasiado largo",
+        "privacyRequired": "Debes aceptar la política de privacidad"
+      },
+      "toast": {
+        "success": "Mensaje enviado",
+        "successDescription": "Nos pondremos en contacto contigo pronto.",
+        "error": "Error al enviar",
+        "errorDescription": "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo."
+      }
+    }
+  },
+  "blog": {
+    "hero": {
+      "label": "Blog",
+      "title": "Noticias y",
+      "highlight": "conocimiento",
+      "description": "Mantente al día con las últimas tendencias en reformas sostenibles, inversión inmobiliaria y eficiencia energética."
+    },
+    "categories": {
+      "all": "Todos",
+      "sustainability": "Sostenibilidad",
+      "investment": "Inversión",
+      "tips": "Consejos",
+      "regulations": "Normativa"
+    },
+    "readArticle": "Leer artículo",
+    "noArticles": "No hay artículos en esta categoría."
+  },
+  "common": {
+    "learnMore": "Más información",
+    "requestQuote": "Solicitar Presupuesto",
+    "contactUs": "Contáctanos"
+  }
+}

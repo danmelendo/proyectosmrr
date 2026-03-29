@@ -1,0 +1,302 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "sustainableReforms": "Sustainable Renovations",
+    "realEstateInvestment": "Real Estate Investment",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "footer": {
+    "description": "We transform spaces with environmental responsibility. Specialists in sustainable renovations and real estate investment.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "sustainableReforms": "Sustainable Renovations",
+    "realEstateInvestment": "Real Estate Investment",
+    "projectManagement": "Project Management",
+    "consulting": "Consulting",
+    "contact": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "copyright": "All rights reserved.",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "language": "Language"
+  },
+  "home": {
+    "hero": {
+      "title1": "Where others see a renovation, we see an ",
+      "opportunity": "opportunity",
+      "title2": " for ",
+      "transformation": "transformation",
+      "subtitle": "At MRR we don't renovate spaces.",
+      "subtitle2": "We transform the way you understand their value."
+    },
+    "innovation": {
+      "title": "Commitment to innovation and sustainability",
+      "text1": "MRR is not a typical renovation company. It's a firm that transforms spaces with purpose, betting on sustainability as a strategic axis and innovation as an engine for change.",
+      "text2": "Because we believe that renovating responsibly is not only better for the environment, but also for the long-term value of each asset.",
+      "text3": "High ",
+      "quality": "quality",
+      "agility": "agility",
+      "text4": " in deadlines and a clear focus: ",
+      "lastingValue": "building lasting value"
+    },
+    "values": {
+      "title": "Our values define us",
+      "commitment": "<span class='font-semibold text-gold'>Commitment</span> authentic with people and the environment",
+      "sustainability": "<span class='font-semibold text-gold'>Sustainability</span> as a principle, not as a trend",
+      "excellence": "<span class='font-semibold text-gold'>Excellence</span> technical and aesthetic in every detail",
+      "transparency": "<span class='font-semibold text-gold'>Transparency</span> and trust in every step",
+      "vision": "<span class='font-semibold text-gold'>Vision</span> long-term with investment ambition",
+      "cta": "Meet Us"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive solutions for your project",
+      "reforms": {
+        "title": "Sustainable Renovations",
+        "description": "We transform spaces with eco-friendly materials and efficient design."
+      },
+      "investment": {
+        "title": "Real Estate Investment",
+        "description": "Expert advice to maximize your real estate investment."
+      },
+      "moreInfo": "More information"
+    },
+    "cta": {
+      "title": "Do you have a project in mind?",
+      "description": "Tell us your idea and we'll help you make it a sustainable reality.",
+      "button": "Contact Us"
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "About Us",
+      "title": "Building the future with",
+      "highlight": "responsibility",
+      "description": "We are a team passionate about sustainable architecture and responsible real estate investment. Over two decades transforming spaces and creating value for our clients and communities."
+    },
+    "story": {
+      "label": "Our Story",
+      "title": "Renovating with vision.",
+      "title2": "MRR is born.",
+      "text1": "In 2022, a simple but powerful idea was born: transforming homes not just to look better, but to be more valuable, livable, and sustainable over time. That's how MRR started. A brand that doesn't see renovations as a formality, but as an opportunity to create real value.",
+      "text2": "From the beginning, we knew we didn't want to be just another renovation company. We wanted to be a project with purpose. With a vision for the future. With commitment to the present.",
+      "text3": "That's why at MRR what we do goes far beyond renovating spaces. We bet on sustainability as a strategy, not as a trend. On long-term profitability, not immediate profit. And on quality, not as a slogan, but as a promise we keep every day."
+    },
+    "values": {
+      "label": "Our Values",
+      "title": "What defines us",
+      "commitment": {
+        "title": "Commitment",
+        "description": "We commit to each project as if it were our own, guaranteeing exceptional results."
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "Every decision we make considers its long-term environmental and social impact."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We seek perfection in every detail, from design to final execution."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "We maintain clear and honest communication throughout the process."
+      }
+    },
+    "team": {
+      "label": "Our Team",
+      "title": "Who leads MRR",
+      "reza": {
+        "name": "Reza Rezaei",
+        "role": "CEO & Founder",
+        "description": "As founder of Proyectos MRR, Reza leads the company's strategic vision, specializing in identifying investment opportunities with high profitability potential. His approach combines rigorous market analysis with asset management aimed at maximizing the value of each asset."
+      },
+      "lucas": {
+        "name": "Lucas Arriola",
+        "role": "CFO & Partner",
+        "description": "Specialist in process optimization and real estate project management. With a background in operational efficiency, Lucas brings an analytical vision focused on results, scaling business models with solid structures and flawless execution."
+      }
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "description": "We're here to help you make your ideas a sustainable reality.",
+      "button": "Contact Us"
+    }
+  },
+  "reforms": {
+    "hero": {
+      "label": "Our Services",
+      "title": "Sustainable",
+      "highlight": "Renovations",
+      "description": "We transform spaces with eco-friendly materials and environmentally respectful techniques to create efficient and healthy homes."
+    },
+    "main": {
+      "title": "Sustainable Renovations",
+      "description": "We transform spaces with eco-friendly materials and environmentally respectful techniques. Our comprehensive approach ensures renovations that not only improve the aesthetics of your home, but also optimize its energy efficiency and reduce its environmental impact.",
+      "features": {
+        "materials": "Certified and sustainable materials",
+        "efficiency": "Optimized energy efficiency",
+        "design": "Bioclimatic design",
+        "waste": "Responsible waste management",
+        "certifications": "Environmental certifications"
+      },
+      "cta": "Request information"
+    },
+    "beforeAfter": {
+      "before": "Before",
+      "after": "After"
+    },
+    "additional": {
+      "label": "Additional Services",
+      "title": "More ways to help you",
+      "projectManagement": {
+        "title": "Project Management",
+        "description": "Comprehensive coordination from design to delivery, ensuring deadlines and budgets."
+      },
+      "energyConsulting": {
+        "title": "Energy Consulting",
+        "description": "Audits and improvement plans to optimize the energy consumption of your property."
+      }
+    },
+    "process": {
+      "label": "Our Process",
+      "title": "How we work",
+      "consultation": {
+        "step": "01",
+        "title": "Consultation",
+        "description": "We analyze your needs, objectives, and expectations in detail to fully understand your project."
+      },
+      "design": {
+        "step": "02",
+        "title": "Design",
+        "description": "We develop a personalized plan that integrates functionality, aesthetics, and sustainability."
+      },
+      "execution": {
+        "step": "03",
+        "title": "Execution",
+        "description": "Our professional team implements each phase with precision and quality control."
+      },
+      "delivery": {
+        "step": "04",
+        "title": "Delivery",
+        "description": "We finish with a result that exceeds expectations, guaranteeing your satisfaction."
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your space?",
+      "description": "Contact us and discover how we can help you with your sustainable renovation.",
+      "button": "Request Information"
+    }
+  },
+  "investment": {
+    "hero": {
+      "label": "Our Services",
+      "title": "Real Estate",
+      "highlight": "Investment",
+      "description": "Expert advice on real estate investment strategies: from collaborative crowdfunding to flipping operations, including specialized funds and renovation financing."
+    },
+    "main": {
+      "title": "Smart Real Estate Investment",
+      "description": "Expert advice to identify profitable and sustainable investment opportunities. Our team accompanies you throughout the process, from finding properties with potential to executing strategic renovations that maximize the value of your investment.",
+      "features": {
+        "analysis": "Detailed market analysis",
+        "flipping": "Identifying flipping opportunities",
+        "strategy": "Strategic buy, renovate, and sell",
+        "dueDiligence": "Complete due diligence",
+        "portfolio": "Real estate portfolio management",
+        "roi": "Maximizing return on investment"
+      },
+      "cta": "Request information"
+    },
+    "financing": {
+      "label": "Financing Options",
+      "title": "Alternative Financing and Collaborative Investment",
+      "description": "Discover the different investment and real estate financing modalities we offer to maximize your profitability."
+    },
+    "cta": {
+      "title": "Ready to invest?",
+      "description": "Contact us and discover how we can help you maximize your real estate investment.",
+      "button": "Request information"
+    }
+  },
+  "contact": {
+    "hero": {
+      "label": "Contact",
+      "title": "Let's talk about your",
+      "highlight": "project",
+      "description": "We're building more than a company. A new way of understanding real estate value: more conscious, more demanding, more aligned with the world to come. And this is just the beginning."
+    },
+    "info": {
+      "title": "Contact information",
+      "description": "Don't hesitate to contact us. We'll be happy to assist you.",
+      "phone": "Phone",
+      "email": "Email",
+      "location": "Location"
+    },
+    "form": {
+      "title": "Send us a message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+34 600 000 000",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help you?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us the details of your project...",
+      "privacy": "I have read and accept the",
+      "privacyLink": "Privacy Policy",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "success": {
+        "title": "Message sent!",
+        "description": "Thank you for contacting us. We'll respond as soon as possible.",
+        "button": "Send another message"
+      },
+      "errors": {
+        "nameRequired": "Name is required",
+        "nameTooLong": "Name is too long",
+        "emailInvalid": "Invalid email",
+        "emailTooLong": "Email is too long",
+        "subjectRequired": "Subject is required",
+        "subjectTooLong": "Subject is too long",
+        "messageMin": "Message must be at least 10 characters",
+        "messageTooLong": "Message is too long",
+        "privacyRequired": "You must accept the privacy policy"
+      },
+      "toast": {
+        "success": "Message sent",
+        "successDescription": "We'll contact you soon.",
+        "error": "Error sending",
+        "errorDescription": "There was a problem sending your message. Please try again."
+      }
+    }
+  },
+  "blog": {
+    "hero": {
+      "label": "Blog",
+      "title": "News and",
+      "highlight": "knowledge",
+      "description": "Stay up to date with the latest trends in sustainable renovations, real estate investment, and energy efficiency."
+    },
+    "categories": {
+      "all": "All",
+      "sustainability": "Sustainability",
+      "investment": "Investment",
+      "tips": "Tips",
+      "regulations": "Regulations"
+    },
+    "readArticle": "Read article",
+    "noArticles": "No articles in this category."
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "requestQuote": "Request a Quote",
+    "contactUs": "Contact Us"
+  }
+}
