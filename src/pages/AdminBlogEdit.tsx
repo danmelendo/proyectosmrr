@@ -7,7 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, Loader2, Save, Upload, X, Plus } from "lucide-react";
+import { ArrowLeft, Loader2, Save, Upload, X, Plus, Eye, EyeOff } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { z } from "zod";
 
 const postSchema = z.object({
@@ -34,6 +35,7 @@ const AdminBlogEdit = () => {
   const [isLoading, setIsLoading] = useState(!isNew);
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [previewMode, setPreviewMode] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [published, setPublished] = useState(false);
   const [coverImageUrl, setCoverImageUrl] = useState<string | null>(null);
@@ -342,6 +344,24 @@ const AdminBlogEdit = () => {
               </h1>
             </div>
             <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => setPreviewMode((p) => !p)}
+              >
+                {previewMode ? (
+                  <>
+                    <EyeOff className="w-4 h-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Editar</span>
+                  </>
+                ) : (
+                  <>
+                    <Eye className="w-4 h-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Vista previa</span>
+                  </>
+                )}
+              </Button>
               <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="text-xs sm:text-sm text-muted-foreground hidden sm:inline">Publicado</span>
                 <Switch checked={published} onCheckedChange={setPublished} />
@@ -571,18 +591,41 @@ const AdminBlogEdit = () => {
             </div>
 
             <div className="md:col-span-2">
-              <label htmlFor="content" className="block text-sm font-medium text-foreground mb-2">
-                Contenido * (Markdown soportado)
-              </label>
-              <Textarea
-                id="content"
-                name="content"
-                value={formData.content}
-                onChange={handleChange}
-                placeholder="Escribe el contenido de la publicación..."
-                rows={20}
-                className={`font-mono text-sm ${errors.content ? "border-destructive" : ""}`}
-              />
+              <div className="flex items-center justify-between mb-2">
+                <label htmlFor="content" className="block text-sm font-medium text-foreground">
+                  Contenido * (Markdown)
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setPreviewMode((p) => !p)}
+                  className="text-xs text-muted-foreground hover:text-gold transition-colors flex items-center gap-1"
+                >
+                  {previewMode ? (
+                    <><EyeOff className="w-3.5 h-3.5" /> Editar</>
+                  ) : (
+                    <><Eye className="w-3.5 h-3.5" /> Vista previa</>
+                  )}
+                </button>
+              </div>
+              {previewMode ? (
+                <div className="min-h-[480px] border border-border rounded-md p-4 prose prose-sm dark:prose-invert max-w-none bg-card overflow-auto">
+                  {formData.content ? (
+                    <ReactMarkdown>{formData.content}</ReactMarkdown>
+                  ) : (
+                    <p className="text-muted-foreground italic">Sin contenido todavía...</p>
+                  )}
+                </div>
+              ) : (
+                <Textarea
+                  id="content"
+                  name="content"
+                  value={formData.content}
+                  onChange={handleChange}
+                  placeholder="Escribe el contenido de la publicación en Markdown...&#10;&#10;# Título&#10;## Subtítulo&#10;**negrita**, *cursiva*&#10;- lista"
+                  rows={20}
+                  className={`font-mono text-sm ${errors.content ? "border-destructive" : ""}`}
+                />
+              )}
               {errors.content && <p className="text-destructive text-sm mt-1">{errors.content}</p>}
             </div>
           </div>

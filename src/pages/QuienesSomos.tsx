@@ -4,6 +4,7 @@ import { ArrowRight, Award, Users, Target, Heart, Mail, Linkedin } from "lucide-
 import Layout from "@/components/layout/Layout";
 import SEO, { getOrganizationSchema, getBreadcrumbSchema } from "@/components/SEO";
 import OptimizedImage from "@/components/ui/optimized-image";
+import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import aboutTeam from "@/assets/about-team-new.png";
 import teamReza from "@/assets/team-reza.png";
 import teamLucas from "@/assets/team-lucas.png";
@@ -31,6 +32,11 @@ const QuienesSomos = () => {
       description: "Mantenemos una comunicación clara y honesta durante todo el proceso.",
     },
   ];
+
+  const storyReveal = useRevealOnScroll(0.3);
+  const valuesReveal = useRevealOnScroll(0.3);
+  const teamReveal = useRevealOnScroll(0.3);
+  const ctaReveal = useRevealOnScroll(0.3);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -75,7 +81,13 @@ const QuienesSomos = () => {
 
       <main>
         {/* Story Section */}
-        <section className="py-20 bg-background" aria-labelledby="story-heading">
+        <section
+          ref={storyReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            storyReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="story-heading"
+        >
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <figure className="relative">
@@ -117,7 +129,13 @@ const QuienesSomos = () => {
         </section>
 
         {/* Values Section */}
-        <section className="py-20 bg-secondary" aria-labelledby="values-heading">
+        <section
+          ref={valuesReveal.ref}
+          className={`py-20 bg-secondary transition-all duration-500 ${
+            valuesReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="values-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-2xl mx-auto mb-16">
               <span className="text-gold font-medium">Nuestros Valores</span>
@@ -148,7 +166,13 @@ const QuienesSomos = () => {
         </section>
 
         {/* Team Section */}
-        <section className="py-20 bg-background" aria-labelledby="team-heading">
+        <section
+          ref={teamReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            teamReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="team-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-2xl mx-auto mb-16">
               <span className="text-gold font-medium">Nuestro Equipo</span>
@@ -235,7 +259,13 @@ const QuienesSomos = () => {
       </main>
 
       {/* CTA Section */}
-      <aside className="py-20 bg-gradient-hero" aria-label="Llamada a la acción">
+      <aside
+        ref={ctaReveal.ref}
+        className={`py-20 bg-gradient-hero transition-all duration-500 ${
+          ctaReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+        }`}
+        aria-label="Llamada a la acción"
+      >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
             ¿Listo para empezar tu proyecto?

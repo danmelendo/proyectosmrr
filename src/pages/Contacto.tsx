@@ -1,15 +1,17 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
 import SEO, { getLocalBusinessSchema, getBreadcrumbSchema } from "@/components/SEO";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { trackAdsConversion } from "@/lib/ads-conversion";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "El nombre es requerido").max(100, "El nombre es demasiado largo"),
@@ -21,8 +23,49 @@ const contactSchema = z.object({
 
 const Contacto = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isRedirectingWhatsapp, setIsRedirectingWhatsapp] = useState(false);
+  const [whatsappNumber, setWhatsappNumber] = useState("");
+  const [whatsappEnabled, setWhatsappEnabled] = useState(true);
+  const [whatsappMessage, setWhatsappMessage] = useState(
+    "Hola, me gustaría obtener más información sobre vuestros servicios."
+  );
+
+  useEffect(() => {
+    supabase
+      .from("site_settings")
+      .select("key, value")
+      .in("key", ["whatsapp_number", "whatsapp_message", "whatsapp_enabled"])
+      .then(({ data }) => {
+        if (!data) return;
+        data.forEach((row) => {
+          if (row.key === "whatsapp_number") setWhatsappNumber(row.value);
+          if (row.key === "whatsapp_message" && row.value) setWhatsappMessage(row.value);
+          if (row.key === "whatsapp_enabled") setWhatsappEnabled(row.value !== "false");
+        });
+      });
+  }, []);
+  // Al confirmarse el envío: dispara la conversión de Google Ads y redirige al
+  // inicio en cuanto la conversión se ha registrado (event_callback), con una
+  // red de seguridad por si el callback no llega (p.ej. bloqueadores).
+  useEffect(() => {
+    if (!isSubmitted) return;
+
+    let cancelled = false;
+    trackAdsConversion({
+      timeoutMs: 2500,
+      onComplete: () => {
+        if (!cancelled) navigate("/");
+      },
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isSubmitted, navigate]);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -95,10 +138,6 @@ const Contacto = () => {
       }
 
       setIsSubmitted(true);
-      toast({
-        title: "Mensaje enviado",
-        description: "Nos pondremos en contacto contigo pronto.",
-      });
     } catch (error: unknown) {
       console.error("Error sending message:", error);
       const errorMessage = error instanceof Error ? error.message : "Hubo un problema al enviar tu mensaje.";
@@ -112,12 +151,35 @@ const Contacto = () => {
     }
   };
 
+  const whatsappLink = whatsappEnabled && whatsappNumber
+    ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappMessage)}`
+    : null;
+
+  // Al pulsar WhatsApp: dispara la conversión, muestra un aviso 2s y continúa
+  // hacia el enlace del botón (no redirige al inicio).
+  const handleWhatsappClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!whatsappLink) return;
+    e.preventDefault();
+
+    setIsRedirectingWhatsapp(true);
+
+    // Dispara la conversión y continúa a WhatsApp cuando se ha registrado
+    // (event_callback). Navegamos en la misma pestaña, como el snippet oficial:
+    // window.open en pestaña nueva se bloquearía al salir del gesto de clic.
+    trackAdsConversion({
+      timeoutMs: 2500,
+      onComplete: () => {
+        window.location.href = whatsappLink;
+      },
+    });
+  };
+
   const contactInfo = [
     {
       icon: Phone,
       title: "Teléfono",
-      value: "+34 644 04 10 36",
-      link: "tel:+34644041036",
+      value: "+34 711 25 33 61",
+      link: "tel:+34711253361",
     },
     {
       icon: Mail,
@@ -148,7 +210,7 @@ const Contacto = () => {
     <Layout>
       <SEO
         title="Contacto - Solicita Presupuesto para tu Reforma en Madrid"
-        description="Contacta con Proyectos MRR para solicitar presupuesto de reformas sostenibles en Madrid. Teléfono: +34 644 04 10 36. Email: info@proyectosmrr.es. Reformas en Las Rozas, Majadahonda, Alcobendas."
+        description="Contacta con Proyectos MRR para solicitar presupuesto de reformas sostenibles en Madrid. Teléfono: +34 711 25 33 61. Email: info@proyectosmrr.es. Reformas en Las Rozas, Majadahonda, Alcobendas."
         keywords="contacto reformas Madrid, presupuesto reforma, consulta gratuita reformas, asesoramiento inmobiliario Madrid, proyectos de reformas en la sierra de Madrid, reformas en Las Rozas, reformas en Majadahonda, reformas en Alcobendas, presupuestos reformas casa, cómo comparar presupuestos de reformas, proyectos mrr reformas Madrid"
         canonicalUrl="/contacto"
         structuredData={structuredData}
@@ -206,45 +268,31 @@ const Contacto = () => {
                   </a>
                 ))}
               </address>
+
+              {whatsappLink && (
+                <div className="mt-8">
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleWhatsappClick}
+                    className="inline-flex items-center gap-3 w-full px-5 py-3 rounded-lg bg-green-500 hover:bg-green-600 text-white font-medium transition-colors duration-300"
+                    aria-label="Contactar por WhatsApp"
+                  >
+                    <MessageCircle className="w-5 h-5 shrink-0" aria-hidden="true" />
+                    Contactar por WhatsApp
+                  </a>
+                </div>
+              )}
             </aside>
 
             {/* Contact Form */}
             <section className="lg:col-span-2" aria-labelledby="form-heading">
               <div className="bg-card p-8 rounded-xl shadow-card">
-                {isSubmitted ? (
-                  <div className="text-center py-12">
-                    <div className="w-20 h-20 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle className="w-10 h-10 text-gold" aria-hidden="true" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      ¡Mensaje enviado!
-                    </h3>
-                    <p className="text-muted-foreground mb-6">
-                      Gracias por contactarnos. Te responderemos lo antes posible.
-                    </p>
-                    <Button
-                      variant="gold"
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setAcceptPrivacy(false);
-                        setFormData({
-                          name: "",
-                          email: "",
-                          phone: "",
-                          subject: "",
-                          message: "",
-                        });
-                      }}
-                    >
-                      Enviar otro mensaje
-                    </Button>
-                  </div>
-                ) : (
-                  <>
-                    <h2 id="form-heading" className="text-2xl font-bold text-foreground mb-6">
-                      Envíanos un mensaje
-                    </h2>
-                    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                <h2 id="form-heading" className="text-2xl font-bold text-foreground mb-6">
+                  Envíanos un mensaje
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                       {/* Honeypot field - hidden from users, bots will fill it */}
                       <div className="absolute left-[-9999px]" aria-hidden="true">
                         <label htmlFor="website">Website</label>
@@ -404,13 +452,55 @@ const Contacto = () => {
                         )}
                       </Button>
                     </form>
-                  </>
-                )}
               </div>
             </section>
           </div>
         </div>
       </main>
+
+      {/* Popup de agradecimiento + conversión. Redirige al inicio automáticamente. */}
+      <Dialog open={isSubmitted}>
+        <DialogContent
+          className="sm:max-w-md text-center"
+          hideClose
+          onPointerDownOutside={(e) => e.preventDefault()}
+          onEscapeKeyDown={(e) => e.preventDefault()}
+        >
+          <div className="flex flex-col items-center py-6">
+            <div className="w-20 h-20 bg-gold/10 rounded-full flex items-center justify-center mb-6">
+              <CheckCircle className="w-10 h-10 text-gold" aria-hidden="true" />
+            </div>
+            <DialogTitle className="text-2xl font-bold text-foreground mb-3 text-center">
+              ¡Gracias por tu interés!
+            </DialogTitle>
+            <DialogDescription className="text-center text-base">
+              Contactaremos contigo a la mayor brevedad posible.
+            </DialogDescription>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Popup de redirección a WhatsApp + conversión. Continúa al enlace del botón. */}
+      <Dialog open={isRedirectingWhatsapp}>
+        <DialogContent
+          className="sm:max-w-md text-center"
+          hideClose
+          onPointerDownOutside={(e) => e.preventDefault()}
+          onEscapeKeyDown={(e) => e.preventDefault()}
+        >
+          <div className="flex flex-col items-center py-6">
+            <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
+              <MessageCircle className="w-10 h-10 text-green-500" aria-hidden="true" />
+            </div>
+            <DialogTitle className="text-2xl font-bold text-foreground text-center">
+              Te estamos redirigiendo
+            </DialogTitle>
+            <DialogDescription className="sr-only">
+              Te estamos redirigiendo a WhatsApp.
+            </DialogDescription>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

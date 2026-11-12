@@ -25,7 +25,7 @@ const PoliticaPrivacidad = () => {
                 <li><strong>CIF:</strong> B10971414</li>
                 <li><strong>Dirección:</strong> Calle Jose Calvo 6, 28039 Madrid</li>
                 <li><strong>Correo electrónico:</strong> info@proyectosmrr.es</li>
-                <li><strong>Teléfono:</strong> +34 644 04 10 36</li>
+                <li><strong>Teléfono:</strong> +34 711 25 33 61</li>
               </ul>
             </section>
 

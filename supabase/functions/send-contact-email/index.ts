@@ -1,3 +1,4 @@
+/// <reference lib="deno.ns" />
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -163,7 +164,7 @@ const handler = async (req: Request): Promise<Response> => {
       return new Response(
         JSON.stringify({ 
           error: "Validation failed", 
-          details: validationResult.error.errors.map(e => e.message) 
+          details: validationResult.error.errors.map((e: z.ZodIssue) => e.message) 
         }),
         {
           status: 400,
@@ -212,6 +213,21 @@ const handler = async (req: Request): Promise<Response> => {
       console.log("Client saved to database successfully");
     }
 
+    // Read destination email from site_settings (fallback to default)
+    let destinationEmail = "info@proyectosmrr.es";
+    try {
+      const { data: settingData } = await supabase
+        .from("site_settings")
+        .select("value")
+        .eq("key", "contact_email")
+        .maybeSingle();
+      if (settingData?.value) {
+        destinationEmail = settingData.value;
+      }
+    } catch (settingsErr) {
+      console.error("Could not read contact_email setting, using default:", settingsErr);
+    }
+
     // Send email notification
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -220,8 +236,8 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Proyectos MRR <noreply@proyectosmrr.es>",
-        to: ["info@proyectosmrr.es"],
+        from: "Proyectos MRR <noreply@mail.proyectosmrr.es>",
+        to: [destinationEmail],
         subject: `Nuevo mensaje de contacto: ${safeSubject}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

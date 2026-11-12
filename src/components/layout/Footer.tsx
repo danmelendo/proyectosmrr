@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -6,9 +7,34 @@ import linkedinIcon from "@/assets/linkedin.svg";
 import instagramIcon from "@/assets/instagram.svg";
 import whatsappIcon from "@/assets/whatsapp.svg";
 import LanguageSelector from "@/components/LanguageSelector";
+import { supabase } from "@/integrations/supabase/client";
 
 const Footer = () => {
   const { t } = useTranslation();
+  const [whatsappEnabled, setWhatsappEnabled] = useState(true);
+  const [whatsappNumber, setWhatsappNumber] = useState("");
+  const [whatsappMessage, setWhatsappMessage] = useState(
+    "Hola, me gustaría obtener más información sobre vuestros servicios."
+  );
+
+  useEffect(() => {
+    supabase
+      .from("site_settings")
+      .select("key, value")
+      .in("key", ["whatsapp_number", "whatsapp_message", "whatsapp_enabled"])
+      .then(({ data }) => {
+        if (!data) return;
+        data.forEach((row) => {
+          if (row.key === "whatsapp_number") setWhatsappNumber(row.value);
+          if (row.key === "whatsapp_message" && row.value) setWhatsappMessage(row.value);
+          if (row.key === "whatsapp_enabled") setWhatsappEnabled(row.value !== "false");
+        });
+      });
+  }, []);
+
+  const whatsappLink = whatsappEnabled && whatsappNumber
+    ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappMessage)}`
+    : null;
 
   return (
     <footer className="bg-gradient-hero text-cream py-16">
@@ -75,7 +101,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-cream/70">
                 <Phone size={18} className="text-gold" />
-                <span>+34 644 04 10 36</span>
+                <span>+34 711 25 33 61</span>
               </li>
               <li className="flex items-center gap-3 text-cream/70">
                 <Mail size={18} className="text-gold" />
@@ -105,15 +131,17 @@ const Footer = () => {
               >
                 <img src={instagramIcon} alt="Instagram" className="w-6 h-6" width="24" height="24" />
               </a>
-              <a
-                href="https://wa.me/34644041036"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-300"
-                aria-label="WhatsApp"
-              >
-                <img src={whatsappIcon} alt="WhatsApp" className="w-6 h-6" width="24" height="24" />
-              </a>
+              {whatsappLink && (
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity duration-300"
+                  aria-label="WhatsApp"
+                >
+                  <img src={whatsappIcon} alt="WhatsApp" className="w-6 h-6" width="24" height="24" />
+                </a>
+              )}
             </div>
           </div>
         </div>

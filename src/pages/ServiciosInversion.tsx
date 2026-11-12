@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Building, Check, Users, Banknote, TrendingUp, PiggyBank, Home, RefreshCw } from "lucide-react";
+import { ArrowRight, Building, Check, Users, TrendingUp, PiggyBank, Home, RefreshCw } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO, { getServiceSchema, getBreadcrumbSchema } from "@/components/SEO";
 import OptimizedImage from "@/components/ui/optimized-image";
-import LoanCalculator from "@/components/LoanCalculator";
+import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import serviceInvestment from "@/assets/service-investment-new.png";
 
 const ServiciosInversion = () => {
@@ -27,17 +27,6 @@ const ServiciosInversion = () => {
         "Diversificación del riesgo entre múltiples inversores",
         "Rentabilidades atractivas sin gestión directa",
         "Transparencia total en cada proyecto",
-      ],
-    },
-    {
-      icon: Banknote,
-      title: "Préstamos para Reforma",
-      description: "Financiación específica para proyectos de rehabilitación inmobiliaria. Estos préstamos están diseñados para cubrir los costes de reforma, permitiendo ejecutar mejoras que aumentan significativamente el valor del inmueble.",
-      benefits: [
-        "Financiación adaptada a proyectos de rehabilitación",
-        "Plazos flexibles según duración de la reforma",
-        "Posibilidad de carencia durante la ejecución",
-        "Tipos de interés competitivos",
       ],
     },
     {
@@ -64,12 +53,21 @@ const ServiciosInversion = () => {
     },
   ];
 
+  const mainServiceReveal = useRevealOnScroll(0.3);
+  const financingReveal = useRevealOnScroll(0.3);
+  const crowdfundingReveal = useRevealOnScroll(0.3);
+  const flippingReveal = useRevealOnScroll(0.3);
+  const fundsReveal = useRevealOnScroll(0.3);
+  const advantagesReveal = useRevealOnScroll(0.3);
+  const processReveal = useRevealOnScroll(0.3);
+  const ctaReveal = useRevealOnScroll(0.3);
+
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       getServiceSchema(
-        "Inversión Inmobiliaria y Flipping",
-        "Asesoramiento experto en inversión inmobiliaria: crowdfunding, préstamos para reforma, flipping y fondos de inversión. Maximiza tu rentabilidad con estrategias probadas.",
+        "Asesoramiento fiscal y consultoría inmobiliaria",
+        "Asesoramiento fiscal y consultoría inmobiliaria para maximizar tu rentabilidad: crowdfunding, flipping y fondos de inversión.",
         "/servicios/inversion"
       ),
       getBreadcrumbSchema([
@@ -83,9 +81,9 @@ const ServiciosInversion = () => {
   return (
     <Layout>
       <SEO
-        title="Inversión Inmobiliaria en Madrid 2026 - Crowdfunding, Flipping y Fondos"
-        description="Asesoramiento experto en inversión inmobiliaria Madrid 2026: crowdfunding, préstamos para reforma, flipping y fondos de inversión. Mejores zonas para invertir en Madrid."
-        keywords="mejores zonas para invertir en Madrid 2026, inversión inmobiliaria Madrid 2026, rentabilidad alquiler Madrid, comprar para alquilar Madrid, zonas rentables Madrid, inversión inmobiliaria Chamartín Madrid, inversión Tetuán Madrid revalorización, Mirasierra inversión familiar Madrid, inversión centro Madrid alquiler, zonas emergentes inversión Madrid, rentabilidad inmobiliaria Salamanca Madrid, precio alquiler Madrid 2026 tendencias, comprar vivienda Madrid 2026, rentabilidad inversión Usera Arganzuela, crowdfunding inmobiliario, flipping inmobiliario, fondos inversión inmobiliaria, préstamos reforma, financiación alternativa, proyectos mrr inversión inmobiliaria, proyectos mrr inversión inmobiliaria Madrid"
+        title="Asesoramiento fiscal y consultoría inmobiliaria en Madrid 2026"
+        description="Asesoramiento fiscal y consultoría inmobiliaria Madrid 2026: crowdfunding, flipping y fondos de inversión. Estrategias para maximizar tu rentabilidad."
+        keywords="mejores zonas para invertir en Madrid 2026, inversión inmobiliaria Madrid 2026, rentabilidad alquiler Madrid, comprar para alquilar Madrid, zonas rentables Madrid, inversión inmobiliaria Chamartín Madrid, inversión Tetuán Madrid revalorización, Mirasierra inversión familiar Madrid, inversión centro Madrid alquiler, zonas emergentes inversión Madrid, rentabilidad inmobiliaria Salamanca Madrid, precio alquiler Madrid 2026 tendencias, comprar vivienda Madrid 2026, rentabilidad inversión Usera Arganzuela, crowdfunding inmobiliario, flipping inmobiliario, fondos inversión inmobiliaria, financiación alternativa, proyectos mrr inversión inmobiliaria, proyectos mrr inversión inmobiliaria Madrid"
         canonicalUrl="/servicios/inversion"
         structuredData={structuredData}
       />
@@ -98,12 +96,15 @@ const ServiciosInversion = () => {
               Nuestros Servicios
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-cream mb-6">
-              Inversión <span className="text-gradient-gold">Inmobiliaria</span>
+              Asesoramiento <span className="text-gradient-gold">fiscal</span>
             </h1>
+            <p className="text-gold/90 font-medium mb-3">
+              Consultoría y asesoramiento inmobiliario
+            </p>
             <p className="text-lg text-cream/80 leading-relaxed">
-              Asesoramiento experto en estrategias de inversión inmobiliaria: desde crowdfunding 
-              colaborativo hasta operaciones de flipping, pasando por fondos especializados y 
-              financiación para reformas.
+              Te acompañamos con enfoque fiscal y estrategia inmobiliaria: desde crowdfunding colaborativo
+              hasta operaciones de flipping y fondos especializados, con análisis y planificación para
+              maximizar la rentabilidad de cada decisión.
             </p>
           </div>
         </div>
@@ -111,7 +112,13 @@ const ServiciosInversion = () => {
 
       <main>
         {/* Main Service */}
-        <section className="py-20 bg-background" aria-labelledby="investment-heading">
+        <section
+          ref={mainServiceReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            mainServiceReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="investment-heading"
+        >
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <figure className="lg:order-2">
@@ -128,10 +135,10 @@ const ServiciosInversion = () => {
                   <Building className="w-7 h-7 text-gold" aria-hidden="true" />
                 </div>
                 <h2 id="investment-heading" className="text-3xl font-bold text-foreground mb-4">
-                  Inversión Inmobiliaria Inteligente
+                  Consultoría inmobiliaria con enfoque fiscal
                 </h2>
                 <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                  Asesoramiento experto para identificar oportunidades de inversión rentables y sostenibles. 
+                  Asesoramiento experto para identificar oportunidades de inversión rentables y sostenibles.
                   Nuestro equipo te acompaña en todo el proceso, desde la búsqueda de propiedades con potencial 
                   hasta la ejecución de reformas estratégicas que maximizan el valor de tu inversión.
                 </p>
@@ -155,7 +162,13 @@ const ServiciosInversion = () => {
         </section>
 
         {/* Financing Options Section */}
-        <section className="py-20 bg-secondary" aria-labelledby="financing-heading">
+        <section
+          ref={financingReveal.ref}
+          className={`py-20 bg-secondary transition-all duration-500 ${
+            financingReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="financing-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-gold font-medium">Opciones de Financiación</span>
@@ -205,7 +218,13 @@ const ServiciosInversion = () => {
         </section>
 
         {/* Crowdfunding Detail Section */}
-        <section className="py-20 bg-background" aria-labelledby="crowdfunding-heading">
+        <section
+          ref={crowdfundingReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            crowdfundingReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="crowdfunding-heading"
+        >
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <article>
@@ -270,7 +289,13 @@ const ServiciosInversion = () => {
         </section>
 
         {/* Flipping Detail Section */}
-        <section className="py-20 bg-secondary" aria-labelledby="flipping-heading">
+        <section
+          ref={flippingReveal.ref}
+          className={`py-20 bg-secondary transition-all duration-500 ${
+            flippingReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="flipping-heading"
+        >
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="lg:order-2">
@@ -340,7 +365,13 @@ const ServiciosInversion = () => {
         </section>
 
         {/* Investment Funds Section */}
-        <section className="py-20 bg-background" aria-labelledby="funds-heading">
+        <section
+          ref={fundsReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            fundsReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="funds-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-3xl mx-auto mb-12">
               <span className="text-gold font-medium">Inversión Institucional</span>
@@ -415,79 +446,14 @@ const ServiciosInversion = () => {
         </section>
 
         {/* Loans Section */}
-        <section className="py-20 bg-secondary" aria-labelledby="loans-heading">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <article>
-                <div className="w-14 h-14 bg-gold/10 rounded-lg flex items-center justify-center mb-6">
-                  <Banknote className="w-7 h-7 text-gold" aria-hidden="true" />
-                </div>
-                <h2 id="loans-heading" className="text-3xl font-bold text-foreground mb-4">
-                  Préstamos para Reforma y Rehabilitación
-                </h2>
-                <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                  Financiación especializada para proyectos de reforma inmobiliaria. Estos préstamos 
-                  están diseñados específicamente para cubrir los costes de rehabilitación, permitiendo 
-                  ejecutar mejoras que incrementan significativamente el valor del inmueble.
-                </p>
-                <div className="space-y-4 mb-8">
-                  <div className="bg-card p-4 rounded-lg">
-                    <h4 className="font-semibold text-foreground mb-2">Préstamos puente</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Financiación a corto plazo para adquirir y reformar propiedades antes de 
-                      refinanciar con una hipoteca tradicional o vender el inmueble.
-                    </p>
-                  </div>
-                  <div className="bg-card p-4 rounded-lg">
-                    <h4 className="font-semibold text-foreground mb-2">Préstamos de rehabilitación</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Productos financieros que incluyen el coste de compra más el presupuesto 
-                      de reforma, liberando fondos según avanza la obra.
-                    </p>
-                  </div>
-                  <div className="bg-card p-4 rounded-lg">
-                    <h4 className="font-semibold text-foreground mb-2">Financiación alternativa</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Acceso a prestamistas privados y plataformas de financiación que ofrecen 
-                      condiciones flexibles para proyectos que no encajan en banca tradicional.
-                    </p>
-                  </div>
-                </div>
-                <Link to="/contacto">
-                  <Button variant="gold" size="lg">
-                    Consultar opciones de financiación
-                    <ArrowRight size={18} />
-                  </Button>
-                </Link>
-              </article>
-              
-              <div className="bg-card p-8 rounded-xl shadow-card">
-                <h3 className="text-xl font-bold text-foreground mb-6">Características de nuestros préstamos</h3>
-                <ul className="space-y-4">
-                  {[
-                    { title: "Plazos flexibles", desc: "Desde 6 meses hasta 3 años según el proyecto" },
-                    { title: "Periodo de carencia", desc: "Posibilidad de no pagar capital durante la reforma" },
-                    { title: "Liberación por fases", desc: "Fondos liberados según avance de obra certificado" },
-                    { title: "Sin comisión de cancelación anticipada", desc: "Cancela cuando vendas sin penalización" },
-                    { title: "Análisis personalizado", desc: "Estudiamos cada proyecto individualmente" },
-                    { title: "Respuesta rápida", desc: "Aprobación en días, no en semanas" },
-                  ].map((item) => (
-                    <li key={item.title} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gold flex-shrink-0 mt-1" aria-hidden="true" />
-                      <div>
-                        <span className="font-semibold text-foreground">{item.title}: </span>
-                        <span className="text-muted-foreground">{item.desc}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Why Invest Section */}
-        <section className="py-20 bg-background" aria-labelledby="advantages-heading">
+        <section
+          ref={advantagesReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            advantagesReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="advantages-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-gold font-medium">¿Por qué invertir con nosotros?</span>
@@ -528,7 +494,13 @@ const ServiciosInversion = () => {
         </section>
 
         {/* Process Section */}
-        <section className="py-20 bg-secondary" aria-labelledby="process-heading">
+        <section
+          ref={processReveal.ref}
+          className={`py-20 bg-secondary transition-all duration-500 ${
+            processReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="process-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-2xl mx-auto mb-16">
               <span className="text-gold font-medium">Nuestro Proceso</span>
@@ -561,13 +533,16 @@ const ServiciosInversion = () => {
             </ol>
           </div>
         </section>
-
-        {/* Loan Calculator */}
-        <LoanCalculator />
       </main>
 
       {/* CTA Section */}
-      <aside className="py-20 bg-gradient-hero" aria-label="Solicitar información">
+      <aside
+        ref={ctaReveal.ref}
+        className={`py-20 bg-gradient-hero transition-all duration-500 ${
+          ctaReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+        }`}
+        aria-label="Solicitar información"
+      >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
             ¿Listo para invertir?

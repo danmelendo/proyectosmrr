@@ -1,65 +1,36 @@
-# Project README
+# Proyectos MRR — Web corporativa
 
-## How can I edit this code?
+Web de [Proyectos MRR](https://proyectosmrr.es), especialistas en reformas sostenibles e inversión inmobiliaria en Madrid.
 
-There are several ways of editing your application.
+SPA en **React + Vite + TypeScript + Tailwind/shadcn** con backend en **Supabase** (Postgres con RLS, Auth, Storage y Edge Functions). Incluye blog, formulario de contacto con envío de email (Resend) y panel de administración.
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Puesta en marcha
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+cp .env.example .env   # rellena las variables de Supabase
+npm run dev            # http://localhost:8080
 ```
 
-**Edit a file directly in GitHub**
+| Script | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción en `dist/` |
+| `npm run preview` | Sirve el build localmente |
+| `npm run lint` | ESLint |
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Estructura
 
-**Use GitHub Codespaces**
+- `src/pages/` — una página por ruta (incluido el panel `/admin`)
+- `src/components/` — layout, panel admin y componentes shadcn/ui
+- `src/integrations/supabase/` — cliente y tipos de la base de datos
+- `supabase/migrations/` — esquema SQL y políticas RLS
+- `supabase/functions/send-contact-email/` — Edge Function del formulario de contacto
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Para agentes de IA
 
-## What technologies are used for this project?
+Lee [AGENTS.md](AGENTS.md) antes de empezar: contexto, arquitectura, reglas de seguridad y problemas conocidos.
 
-This project is built with:
+## Seguridad
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-This is a static Vite app. You can build it and deploy the `dist` folder to any static hosting provider.
-
-```sh
-# Production build
-npm run build
-
-# Preview the production build locally
-npm run preview
-```
-
-If you deploy under a subpath (for example, `https://example.com/app/`), set `base` in `vite.config.ts`.
+No subas nunca archivos `.env` ni claves privadas. Si encuentras una vulnerabilidad, contacta con el equipo por el formulario de [proyectosmrr.es](https://proyectosmrr.es/#/contacto) en lugar de abrir un issue público.

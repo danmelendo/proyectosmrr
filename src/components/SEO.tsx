@@ -23,7 +23,7 @@ const SEO = ({
   description,
   keywords,
   canonicalUrl,
-  ogImage = "https://storage.googleapis.com/gpt-engineer-file-uploads/5IHaPwWFPchaga4KeOv0d8O6L1y2/social-images/social-1766507957273-meta.png",
+  ogImage = "https://proyectosmrr.es/isologo.png",
   ogType = "website",
   article,
   structuredData,
@@ -150,7 +150,7 @@ export const getOrganizationSchema = () => ({
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+34-644-04-10-36",
+    telephone: "+34 711 25 33 61",
     contactType: "customer service",
     availableLanguage: ["Spanish"],
   },
@@ -168,7 +168,7 @@ export const getLocalBusinessSchema = () => ({
   name: "Proyectos MRR",
   image: "https://proyectosmrr.es/og-image.png",
   url: "https://proyectosmrr.es",
-  telephone: "+34644041036",
+  telephone: "+34 711 25 33 61",
   email: "info@proyectosmrr.es",
   address: {
     "@type": "PostalAddress",

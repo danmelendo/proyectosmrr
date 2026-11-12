@@ -4,11 +4,12 @@ import { ArrowRight, Hammer, Briefcase, Lightbulb, Check } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO, { getServiceSchema, getBreadcrumbSchema } from "@/components/SEO";
 import OptimizedImage from "@/components/ui/optimized-image";
+import useRevealOnScroll from "@/hooks/useRevealOnScroll";
 import ReformBudgetCalculator from "@/components/ReformBudgetCalculator";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import serviceReform from "@/assets/service-reform-new.png";
 import reformBefore from "@/assets/reform-before.jpg";
-import reformAfter from "@/assets/reform-after.jpg";
+import reformAfter from "@/assets/reform-after.png";
 const ServiciosReformas = () => {
   const features = [
     "Materiales certificados y sostenibles",
@@ -30,6 +31,11 @@ const ServiciosReformas = () => {
       description: "Auditorías y planes de mejora para optimizar el consumo energético de tu propiedad.",
     },
   ];
+
+  const mainServiceReveal = useRevealOnScroll(0.3);
+  const additionalServicesReveal = useRevealOnScroll(0.3);
+  const processReveal = useRevealOnScroll(0.3);
+  const ctaReveal = useRevealOnScroll(0.3);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -77,7 +83,13 @@ const ServiciosReformas = () => {
 
       <main>
         {/* Main Service */}
-        <section className="py-20 bg-background" aria-labelledby="service-heading">
+        <section
+          ref={mainServiceReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            mainServiceReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="service-heading"
+        >
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <figure>
@@ -129,7 +141,13 @@ const ServiciosReformas = () => {
         />
 
         {/* Additional Services */}
-        <section className="py-20 bg-secondary" aria-labelledby="additional-heading">
+        <section
+          ref={additionalServicesReveal.ref}
+          className={`py-20 bg-secondary transition-all duration-500 ${
+            additionalServicesReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="additional-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-gold font-medium">Servicios Adicionales</span>
@@ -160,7 +178,13 @@ const ServiciosReformas = () => {
         </section>
 
         {/* Process Section */}
-        <section className="py-20 bg-background" aria-labelledby="process-heading">
+        <section
+          ref={processReveal.ref}
+          className={`py-20 bg-background transition-all duration-500 ${
+            processReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+          }`}
+          aria-labelledby="process-heading"
+        >
           <div className="container mx-auto px-4">
             <header className="text-center max-w-2xl mx-auto mb-16">
               <span className="text-gold font-medium">Nuestro Proceso</span>
@@ -199,7 +223,13 @@ const ServiciosReformas = () => {
       </main>
 
       {/* CTA Section */}
-      <aside className="py-20 bg-gradient-hero" aria-label="Solicitar presupuesto">
+      <aside
+        ref={ctaReveal.ref}
+        className={`py-20 bg-gradient-hero transition-all duration-500 ${
+          ctaReveal.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 will-change-[opacity,transform]'
+        }`}
+        aria-label="Solicitar presupuesto"
+      >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-cream mb-4">
             ¿Listo para transformar tu espacio?

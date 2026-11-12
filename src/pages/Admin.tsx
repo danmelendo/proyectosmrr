@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { 
-  FileText, 
-  LogOut, 
-  Loader2, 
+import {
+  FileText,
+  LogOut,
+  Loader2,
   Home,
   Plus,
   Users,
   Menu,
-  X
+  Settings
 } from "lucide-react";
 import BlogPostsList from "@/components/admin/BlogPostsList";
 import ClientsList from "@/components/admin/ClientsList";
+import AdminSettings from "@/components/admin/AdminSettings";
 import logoPrincipal from "@/assets/logo_principal.png";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -26,7 +27,9 @@ const Admin = () => {
   // Get active tab from URL hash or default to "blog"
   const getTabFromHash = () => {
     const hash = location.hash.replace("#", "");
-    return hash === "clientes" ? "clientes" : "blog";
+    if (hash === "clientes") return "clientes";
+    if (hash === "configuracion") return "configuracion";
+    return "blog";
   };
   
   const [activeTab, setActiveTab] = useState(getTabFromHash);
@@ -99,6 +102,17 @@ const Admin = () => {
           >
             <Users className="w-5 h-5" />
             Clientes
+          </button>
+          <button
+            onClick={() => handleTabChange("configuracion")}
+            className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+              activeTab === "configuracion"
+                ? "bg-gold/10 text-gold"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+            }`}
+          >
+            <Settings className="w-5 h-5" />
+            Configuración
           </button>
         </div>
       </nav>
@@ -189,6 +203,20 @@ const Admin = () => {
                 </div>
               </div>
               <ClientsList />
+            </>
+          )}
+
+          {activeTab === "configuracion" && (
+            <>
+              <div className="flex flex-col gap-4 mb-6 lg:mb-8">
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Configuración</h1>
+                  <p className="text-muted-foreground mt-1 text-sm sm:text-base">
+                    Gestiona el email de notificaciones y el botón de WhatsApp
+                  </p>
+                </div>
+              </div>
+              <AdminSettings />
             </>
           )}
         </div>

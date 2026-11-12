@@ -10,11 +10,13 @@ const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
   const { t } = useTranslation();
+  const showRealEstateProjects = false;
 
   const navLinks = [
     { path: "/", label: t("nav.home") },
     { path: "/quienes-somos", label: t("nav.about") },
     { path: "/blog", label: t("nav.blog") },
+    ...(showRealEstateProjects ? [{ path: "/proyectos-inmobiliarios", label: "Proyectos inmobiliarios" }] : []),
   ];
 
   const serviceLinks = [
@@ -114,7 +116,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-t border-border animate-fade-in">
+          <div className="md:hidden absolute top-20 left-0 right-0 bg-forest/98 backdrop-blur-md border-t border-[#f8f1de]/10 animate-fade-in">
             <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
@@ -122,7 +124,7 @@ const Header = () => {
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-lg font-medium py-2 transition-colors duration-300 ${
-                    isActive(link.path) ? "text-gold" : "text-foreground hover:text-gold"
+                    isActive(link.path) ? "text-gold" : "text-[#f8f1de]/90 hover:text-gold"
                   }`}
                 >
                   {link.label}
@@ -134,7 +136,7 @@ const Header = () => {
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   className={`flex items-center justify-between w-full text-lg font-medium py-2 transition-colors duration-300 ${
-                    isServiceActive() ? "text-gold" : "text-foreground hover:text-gold"
+                    isServiceActive() ? "text-gold" : "text-[#f8f1de]/90 hover:text-gold"
                   }`}
                 >
                   {t("nav.services")}
@@ -144,14 +146,14 @@ const Header = () => {
                   />
                 </button>
                 {isServicesOpen && (
-                  <div className="pl-4 mt-2 space-y-2 border-l border-border">
+                  <div className="pl-4 mt-2 space-y-2 border-l border-cream/20">
                     {serviceLinks.map((link) => (
                       <Link
                         key={link.path}
                         to={link.path}
                         onClick={() => setIsMenuOpen(false)}
                         className={`block text-base py-2 transition-colors duration-300 ${
-                          isActive(link.path) ? "text-gold" : "text-foreground hover:text-gold"
+                          isActive(link.path) ? "text-gold" : "text-[#f8f1de]/90 hover:text-gold"
                         }`}
                       >
                         {link.label}
@@ -162,11 +164,7 @@ const Header = () => {
               </div>
 
               <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full mt-2 border-gold text-gold hover:bg-gold/10"
-                >
+                <Button variant="headerOutline" size="sm" className="w-full mt-2">
                   {t("nav.contact")}
                 </Button>
               </Link>
